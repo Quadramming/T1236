@@ -1,0 +1,13 @@
+@font-face {
+	font-family: Ken;
+	src:         url("../fonts/KenVectorBold.ttf");
+}
+
+@font-face {
+	font-family: KenFuture;
+	src:         url("../fonts/KenVectorFuture.ttf");
+}
+
+body {
+	background-color: #000000;
+}
