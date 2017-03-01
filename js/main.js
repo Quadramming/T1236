@@ -1,9 +1,23 @@
 window.addEventListener('load', () => {
 	
 	const imgs = [
+		'imgs/bg.png',
 		'imgs/block.png',
-		'imgs/bg.png'
+		'imgs/check.png',
+		'imgs/dialog.png',
+		'imgs/gap.png',
+		'imgs/info.png',
+		'imgs/next.png',
+		'imgs/restart.png',
+		'imgs/settings.png',
+		'imgs/uncheck.png'
 	];
 	
-	QQ.engine.start(imgs);
+	const appConfig = {
+		width:    600,
+		height:   800,
+		maximize: true
+	};
+	
+	QQ.engine.start(imgs, appConfig);
 });
