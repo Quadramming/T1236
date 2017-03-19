@@ -10,6 +10,7 @@ const indexFile   = '../index.html';
 //================================================================
 // Code
 //================================================================
+
 const fs      = require('fs');
 const re      = /(<!-- scripts -->)[\S\s]*?(<!-- \/scripts -->)/;
 let   content = fs.readFileSync(indexFile, 'utf-8');

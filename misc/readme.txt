@@ -1,4 +1,5 @@
-1) Add: 
+1) Optional. Block backbutton. 
+Add: 
 
 @Override
 public void onBackPressed() {
@@ -6,7 +7,8 @@ public void onBackPressed() {
 
 in "CordovaActivity.java" after "protected void onPause() {...}"
 
-2) Add:
+2) Allow meta in project.
+Add:
 
 settings.setUseWideViewPort(true);
 settings.setLoadWithOverviewMode(true);
