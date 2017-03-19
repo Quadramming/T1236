@@ -19,7 +19,7 @@ QQ.Seizures.SeizureMain.Score = class Score {
 	}
 	
 	setScore(score) {
-		this._score = score;
+		this._score = parseInt(score, 10);
 		this._topScore.tryScore(score);
 		this._textScore.setText(this._getText());
 	}

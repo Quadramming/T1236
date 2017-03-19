@@ -41,8 +41,8 @@ QQ.Seizures.SeizureMain.Field = class Field {
 			this._seizure.blockInput();
 			this._finished = true;
 			setTimeout( () => {
-				this._resetSavedField();
 				QQ.seizures.popUp('EndLevel', this._score.getScore());
+				this._resetSavedField();
 			}, 1000 );
 			return;
 		}
@@ -57,12 +57,15 @@ QQ.Seizures.SeizureMain.Field = class Field {
 			}
 		}
 		QQ.application.storage('Field', field);
+		QQ.application.storage('curScore', this._score.getScore());
 	}
 	
 	_resetSavedField() {
 		let save = '0';
 		save = save.repeat(1 + this._rows*this._cols);
 		QQ.application.storage('Field', save);
+		this._score.setScore(0);
+		QQ.application.storage('curScore', '0');
 		return save;
 	}
 	
@@ -117,7 +120,9 @@ QQ.Seizures.SeizureMain.Field = class Field {
 	}
 	
 	_initField() {
-		let field = QQ.application.storage('Field');
+		let field        = QQ.application.storage('Field');
+		let currentScore = QQ.application.storage('curScore') || 0;
+		this._score.setScore(currentScore);
 		if ( field === null ) {
 			field = this._resetSavedField();
 		}

@@ -23,6 +23,7 @@ QQ.seizures.add('Info', class Info
 		reset.click = () => {
 			let field = String( QQ.application.storage('Field') );
 			QQ.application.storage('Field', field.replace(/./g, '0') );
+			QQ.application.storage('curScore', '0');
 			QQ.seizures.closePopUp();
 			QQ.seizures.reset();
 		};
