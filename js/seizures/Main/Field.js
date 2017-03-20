@@ -64,7 +64,6 @@ QQ.Seizures.SeizureMain.Field = class Field {
 		let save = '0';
 		save = save.repeat(1 + this._rows*this._cols);
 		QQ.application.storage('Field', save);
-		this._score.setScore(0);
 		QQ.application.storage('curScore', '0');
 		return save;
 	}
