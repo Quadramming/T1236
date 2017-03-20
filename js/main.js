@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
-	
-	const imgs = [
+	document.addEventListener('deviceready', () => {
+		
+		const imgs = [
 		'imgs/bg.png',
 		'imgs/block.png',
 		'imgs/check.png',
@@ -12,12 +13,14 @@ window.addEventListener('load', () => {
 		'imgs/settings.png',
 		'imgs/uncheck.png'
 	];
-	
-	const appConfig = {
-		width:    600,
-		height:   800,
-		maximize: true
-	};
-	
-	QQ.engine.start(imgs, appConfig);
+		
+		const appConfig = {
+			width:    600,
+			height:   800,
+			maximize: true
+		};
+		
+		QQ.engine.start(imgs, appConfig);
+		
+	}, false);
 });

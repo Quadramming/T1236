@@ -3,9 +3,8 @@
 	src:         url("../fonts/KenVectorBold.ttf");
 }
 
-@font-face {
-	font-family: KenFuture;
-	src:         url("../fonts/KenVectorFuture.ttf");
+.fontLoader {
+	font-size: 0px;
 }
 
 body {

@@ -13,7 +13,7 @@ QQ.seizures.add('Info', class Info
 				'Game  by  Quad\n'+
 				'Assets  by  kenney.nl',
 				0, 13, 
-				17, QQ.Text.fit.WIDTH
+				1.5, QQ.Text.fit.HEIGHT
 			);
 		text.setLineSpace(10);
 		this._world.addSubject(text);
