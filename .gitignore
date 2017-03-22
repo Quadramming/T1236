@@ -2,5 +2,6 @@ imgs
 sounds
 fonts
 js/qqengine
+js/babel-polyfill.min.js
 build
 release
