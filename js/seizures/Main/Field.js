@@ -98,7 +98,7 @@ QQ.Seizures.SeizureMain.Field = class Field {
 		if ( n === '0' || ! n ) {
 			n = this._getRandom();
 		}
-		let nextBlock = new Block(
+		let nextBlock = new Field.Block(
 			this._next.from.x * QQ.Math.any(1, -1),
 			this._next.from.y,
 			n
@@ -152,7 +152,7 @@ QQ.Seizures.SeizureMain.Field = class Field {
 				bt.click = () => { this._clickCol(j); };
 				this._world.unshiftSubject( bt );
 				if ( cell.value ) {
-					let block = new Block(
+					let block = new Field.Block(
 						cell.x,
 						cell.y,
 						cell.value

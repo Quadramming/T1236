@@ -1,4 +1,4 @@
-class CheckBox extends QQ.SubjectBase {
+QQ.Seizures.SeizureInfo.CheckBox = class CheckBox extends QQ.SubjectBase {
 	
 	constructor(text, w, h) {
 		super(w, h);
@@ -40,4 +40,4 @@ class CheckBox extends QQ.SubjectBase {
 		this.value = QQ.application.storage(this.name) === 'true';
 	}
 	
-}
+};

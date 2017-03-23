@@ -1,4 +1,4 @@
-class Block extends QQ.Subject {
+QQ.Seizures.SeizureMain.Field.Block = class Block extends QQ.Subject {
 	
 	constructor(x, y, value) {
 		super('imgs/block.png', 5, 5);
@@ -6,12 +6,13 @@ class Block extends QQ.Subject {
 		this._value = value;
 		this._text = new QQ.Text(this._value);
 		this._text.setLineHeight(50);
-		this._ctx = QQ.application.getContext();
-		this._action = new ActionBase(this);
+		this._app = QQ.application;
+		this._ctx = this._app.getContext();
+		this._action = new QQ.Actions.Base(this._app, this);
 	}
 	
 	moveTo(to, onEnd = () => {} ) {
-		this._action = new ActionMove(this,
+		this._action = new QQ.Actions.Move(this._app, this,
 			{ x: this._x, y: this._y },
 			to,
 			this._getTime()
@@ -20,7 +21,11 @@ class Block extends QQ.Subject {
 	}
 	
 	disapear(fn) {
-		this._action = new ActionDisapear(this, this._getTime());
+		this._action = new QQ.Actions.Disapear(
+				this._app,
+				this,
+				this._getTime()
+			);
 		this._action.onEnd = fn;
 	}
 	
@@ -29,7 +34,7 @@ class Block extends QQ.Subject {
 	}
 	
 	isIdle() {
-		return this._action.type() === 'idle';
+		return this._action.type() === 'base';
 	}
 	
 	isClickable() {
@@ -46,7 +51,7 @@ class Block extends QQ.Subject {
 	}
 	
 	setIdle() {
-		this._action = new ActionBase(this);
+		this._action = new QQ.Actions.Base(this._app, this);
 	}
 	
 	draw() {
@@ -68,4 +73,4 @@ class Block extends QQ.Subject {
 		return time;
 	}
 	
-}
+};

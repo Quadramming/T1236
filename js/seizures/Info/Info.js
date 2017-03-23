@@ -1,4 +1,4 @@
-QQ.seizures.add('Info', class Info
+QQ.Seizures.SeizureInfo = class Info
 	extends QQ.Seizures.SeizureBase
 {
 	
@@ -36,9 +36,11 @@ QQ.seizures.add('Info', class Info
 		};
 		this._world.addSubject(close);
 		
-		let animation = new CheckBox('Fast animation', 2, 2);
+		let animation = new Info.CheckBox('Fast animation', 2, 2);
 		this._world.addSubject(animation);
 		animation.setPosition(-7, 8);
 	}
 	
-});
+};
+
+QQ.seizures.add('Info', QQ.Seizures.SeizureInfo);
