@@ -1,10 +1,10 @@
-QQ.Seizures.SeizureMain.Score = class Score {
+game.seizures.Main.Score = class Score {
 	
-	constructor(world) {
-		this._topScore  = new QQ.Seizures.SeizureMain.TopScore(world);
+	constructor(app, world) {
+		this._topScore  = new game.seizures.Main.TopScore(app, world);
 		this._prefix    = 'Score   ';
 		this._score     = 0;
-		this._textScore = new QQ.Text(this._getText(), 0, 17, 2);
+		this._textScore = new QQ.Text(app, this._getText(), 0, 17, 2);
 		this.setScore(0);
 		world.addSubject(this._textScore);
 	}

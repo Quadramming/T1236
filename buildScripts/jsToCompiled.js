@@ -4,8 +4,8 @@
 // Settings
 //================================================================
 
-const output      = '../build/compiled.js';
-const from        = '../index.html';
+const from        = 'htmlRoot/index.html';
+const output      = 'build/compiled.js';
 
 //================================================================
 // Code
@@ -28,7 +28,7 @@ fs.writeFileSync(output, "// Made by jsToCompiled.js\n'use strict';\n", {
 });
 for ( let file of files ) {
 	let toWrite = '\n// ' + file + '\n' +
-			fs.readFileSync('../'+file, 'utf-8');
+			fs.readFileSync('htmlRoot/'+file, 'utf-8');
 	fs.writeFileSync(output, toWrite, {
 		encoding : 'utf-8',
 		flag     : 'a'

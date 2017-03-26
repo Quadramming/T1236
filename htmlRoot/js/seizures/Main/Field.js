@@ -1,6 +1,7 @@
-QQ.Seizures.SeizureMain.Field = class Field {
+game.seizures.Main.Field = class Field {
 	
-	constructor(seizure, settings) {
+	constructor(app, seizure, settings) {
+		this._app      = app;
 		this._score    = seizure.getScore();
 		this._seizure  = seizure;
 		this._settings = settings;
@@ -41,7 +42,7 @@ QQ.Seizures.SeizureMain.Field = class Field {
 			this._seizure.blockInput();
 			this._finished = true;
 			setTimeout( () => {
-				QQ.seizures.popUp('EndLevel', this._score.getScore());
+				this._app.sz().popUp('EndLevel', this._score.getScore());
 				this._resetSavedField();
 			}, 1000 );
 			return;
@@ -56,15 +57,15 @@ QQ.Seizures.SeizureMain.Field = class Field {
 				field += cell.value;
 			}
 		}
-		QQ.application.storage('Field', field);
-		QQ.application.storage('curScore', this._score.getScore());
+		this._app.storage('Field', field);
+		this._app.storage('curScore', this._score.getScore());
 	}
 	
 	_resetSavedField() {
 		let save = '0';
 		save = save.repeat(1 + this._rows*this._cols);
-		QQ.application.storage('Field', save);
-		QQ.application.storage('curScore', '0');
+		this._app.storage('Field', save);
+		this._app.storage('curScore', '0');
 		return save;
 	}
 	
@@ -99,6 +100,7 @@ QQ.Seizures.SeizureMain.Field = class Field {
 			n = this._getRandom();
 		}
 		let nextBlock = new Field.Block(
+			this._app,
 			this._next.from.x * QQ.Math.any(1, -1),
 			this._next.from.y,
 			n
@@ -119,8 +121,8 @@ QQ.Seizures.SeizureMain.Field = class Field {
 	}
 	
 	_initField() {
-		let field        = QQ.application.storage('Field');
-		let currentScore = QQ.application.storage('curScore') || 0;
+		let field        = this._app.storage('Field');
+		let currentScore = this._app.storage('curScore') || 0;
 		this._score.setScore(currentScore);
 		if ( field === null ) {
 			field = this._resetSavedField();
@@ -147,12 +149,13 @@ QQ.Seizures.SeizureMain.Field = class Field {
 			for ( let [j, cell] of row.entries() ) {
 				cell.x   = j*this._space - (this._cols-1)*this._space/2;
 				cell.y   = (this._offsetY - i*this._space);
-				const bt = new QQ.Subject('imgs/gap.png', 5, 5);
+				const bt = new QQ.Subject(this._app, 'imgs/gap.png', 5, 5);
 				bt.setPosition(cell.x, cell.y);
 				bt.click = () => { this._clickCol(j); };
 				this._world.unshiftSubject( bt );
 				if ( cell.value ) {
 					let block = new Field.Block(
+						this._app,
 						cell.x,
 						cell.y,
 						cell.value

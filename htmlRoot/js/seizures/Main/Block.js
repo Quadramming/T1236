@@ -1,18 +1,19 @@
-QQ.Seizures.SeizureMain.Field.Block = class Block extends QQ.Subject {
+game.seizures.Main.Field.Block = class Block extends QQ.Subject {
 	
-	constructor(x, y, value) {
-		super('imgs/block.png', 5, 5);
+	constructor(app, x, y, value) {
+		super(app, 'imgs/block.png', 5, 5);
 		this.setPosition(x, y);
-		this._value = value;
-		this._text = new QQ.Text(this._value);
+		this._value  = value;
+		this._ctx    = this._app.getContext();
+		this._action = new QQ.Actions.Base(app, this);
+		this._text   = new QQ.Text(app, this._value);
 		this._text.setLineHeight(50);
-		this._app = QQ.application;
-		this._ctx = this._app.getContext();
-		this._action = new QQ.Actions.Base(this._app, this);
 	}
 	
 	moveTo(to, onEnd = () => {} ) {
-		this._action = new QQ.Actions.Move(this._app, this,
+		this._action = new QQ.Actions.Move(
+			this._app,
+			this,
 			{ x: this._x, y: this._y },
 			to,
 			this._getTime()
@@ -68,7 +69,7 @@ QQ.Seizures.SeizureMain.Field.Block = class Block extends QQ.Subject {
 	}
 	
 	_getTime() {
-		let isAnimation = QQ.application.storage('CheckBox_Fast animation');
+		let isAnimation = this._app.storage('CheckBox_Fast animation');
 		let time = (isAnimation === 'true' ? 50 : 300);
 		return time;
 	}

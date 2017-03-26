@@ -1,12 +1,12 @@
-QQ.Seizures.SeizureInfo.CheckBox = class CheckBox extends QQ.SubjectBase {
+game.seizures.Info.CheckBox = class CheckBox extends QQ.SubjectBase {
 	
-	constructor(text, w, h) {
-		super(w, h);
+	constructor(app, text, w, h) {
+		super(app, w, h);
 		this.name    = 'CheckBox_'+text;
 		this.value   = false;
-		this.check   = new QQ.Subject('imgs/check.png');
-		this.uncheck = new QQ.Subject('imgs/uncheck.png');
-		this.text    = new QQ.Text(text);
+		this.check   = new QQ.Subject(app, 'imgs/check.png');
+		this.uncheck = new QQ.Subject(app, 'imgs/uncheck.png');
+		this.text    = new QQ.Text(app, text);
 		this.text.setLineHeight(50);
 		this._update();
 	}
@@ -25,7 +25,7 @@ QQ.Seizures.SeizureInfo.CheckBox = class CheckBox extends QQ.SubjectBase {
 	}
 	
 	click() {
-		QQ.application.storage(this.name, String(!this.value) );
+		this._app.storage(this.name, String(!this.value) );
 		this._update();
 	}
 	
@@ -37,7 +37,7 @@ QQ.Seizures.SeizureInfo.CheckBox = class CheckBox extends QQ.SubjectBase {
 	}
 	
 	_update() {
-		this.value = QQ.application.storage(this.name) === 'true';
+		this.value = this._app.storage(this.name) === 'true';
 	}
 	
 };

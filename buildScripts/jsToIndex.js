@@ -1,11 +1,12 @@
-// Fill main.js with imgs from folder
+// NEED FIX
+// Fill index.html with JS-files from folder
 
 //================================================================
 // Settings
 //================================================================
 
-const output  = '../js/main.js';
-const imgsDir = '../imgs';
+const output = '../htmlRoot/index.html';
+const jsDir  = '../htmlRoot/js';
 
 //================================================================
 // Functions
@@ -35,16 +36,18 @@ function getFiles(dir, inFiles = [], showHidding = false) {
 const fs    = require('fs');
 let   files = '';
 
-for ( const file of getFiles(imgsDir) ) {
-	files += "\t\t\t'" + file.substr(3) + "',\n";
+for ( const file of getFiles(jsDir) ) {
+	files += 
+		"\t\t\t<script type='application/javascript' src='" +
+		file.substr(3) + "'>" +
+		"</script>\n";
 }
-files = files.replace(/[\s\S]([\s\S])$/, '$1');
 
-const re      = /(const imgs = \[)[\S\s]*?(\];)/;
+const re      = /(<!-- scripts -->)[\S\s]*?(<!-- \/scripts -->)/;
 let   content = fs.readFileSync(output, 'utf-8');
-content       = content.replace(re, '$1\n' + files + '\t\t$2');
+content     = content.replace(re, '$1\n' + files + '\t\t$2');
+
 fs.writeFileSync(output, content, {
 	encoding : 'utf-8',
 	flag     : 'w'
 });
-

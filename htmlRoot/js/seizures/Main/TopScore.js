@@ -1,9 +1,10 @@
-QQ.Seizures.SeizureMain.TopScore = class TopScore {
+game.seizures.Main.TopScore = class TopScore {
 	
-	constructor(world) {
+	constructor(app, world) {
+		this._app       = app;
 		this._prefix    = 'BEST\n';
 		this._score     = 0;
-		this._textScore = new QQ.Text('', 6, -15, 3);
+		this._textScore = new QQ.Text(app, '', 6, -15, 3);
 		this._textScore.setLineSpace(10);
 		world.addSubject(this._textScore);
 		this._update();
@@ -24,9 +25,9 @@ QQ.Seizures.SeizureMain.TopScore = class TopScore {
 	_store(val) {
 		let key = 'topScore';
 		if ( val ) {
-			QQ.application.storage(key, val);
+			this._app.storage(key, val);
 		}
-		let result = QQ.application.storage(key);
+		let result = this._app.storage(key);
 		return Number(result);
 	}
 	

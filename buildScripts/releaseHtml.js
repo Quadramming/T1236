@@ -4,8 +4,8 @@
 // Settings
 //================================================================
 
-const releaseFile = '../release/index.html';
-const indexFile   = '../index.html';
+const releaseFile = 'compiled/index.html';
+const indexFile   = 'htmlRoot/index.html';
 
 //================================================================
 // Code

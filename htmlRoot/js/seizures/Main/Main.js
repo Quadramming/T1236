@@ -1,13 +1,13 @@
-QQ.Seizures.SeizureMain = class Main
+game.seizures.Main = class Main
 	extends QQ.Seizures.SeizureBase
 {
 	
-	constructor() {
-		super();
+	constructor(app) {
+		super(app);
 		this._camera.init(30, 40, 0, 0);
 		this._world.addBackground('imgs/bg.png');
-		this._score    = new Main.Score(this._world);
-		this._field    = new Main.Field(this, {
+		this._score    = new Main.Score(app, this._world);
+		this._field    = new Main.Field(app, this, {
 			rows:      4,
 			cols:      4,
 			rndFrom:   1,
@@ -31,12 +31,12 @@ QQ.Seizures.SeizureMain = class Main
 	}
 	
 	_addInfo(x, y) {
-		let back = new QQ.Subject('imgs/info.png', 5, 5);
+		let back = new QQ.Subject(this._app, 'imgs/info.png', 5, 5);
 		back.setPosition(x, y);
-		back.click = () => QQ.seizures.popUp('Info');
+		back.click = () => this._app.sz().popUp('Info');
 		this._world.addSubject(back);
 	}
 	
 };
 
-QQ.seizures.add('Main', QQ.Seizures.SeizureMain);
+QQ.Seizures.register.set('Main', game.seizures.Main);
