@@ -1,11 +1,11 @@
-game.seizures.Info.CheckBox = class CheckBox extends QQ.SubjectBase {
+game.seizures.Info.CheckBox = class CheckBox extends QQ.Subject.Base {
 	
 	constructor(app, text, w, h) {
 		super(app, w, h);
 		this.name    = 'CheckBox_'+text;
 		this.value   = false;
-		this.check   = new QQ.Subject(app, 'imgs/check.png');
-		this.uncheck = new QQ.Subject(app, 'imgs/uncheck.png');
+		this.check   = new QQ.Subject.Sprite(app, 'imgs/check.png');
+		this.uncheck = new QQ.Subject.Sprite(app, 'imgs/uncheck.png');
 		this.text    = new QQ.Text(app, text);
 		this.text.setLineHeight(50);
 		this._update();

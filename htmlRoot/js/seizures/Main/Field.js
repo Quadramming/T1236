@@ -149,7 +149,11 @@ game.seizures.Main.Field = class Field {
 			for ( let [j, cell] of row.entries() ) {
 				cell.x   = j*this._space - (this._cols-1)*this._space/2;
 				cell.y   = (this._offsetY - i*this._space);
-				const bt = new QQ.Subject(this._app, 'imgs/gap.png', 5, 5);
+				const bt = new QQ.Subject.Sprite(
+						this._app,
+						'imgs/gap.png',
+						5, 5
+					);
 				bt.setPosition(cell.x, cell.y);
 				bt.click = () => { this._clickCol(j); };
 				this._world.unshiftSubject( bt );

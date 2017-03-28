@@ -1,5 +1,5 @@
 game.seizures.EndLevel = class EndLevel
-	extends QQ.Seizures.SeizureBase
+	extends QQ.Seizures.Base
 {
 	
 	constructor(app, score) {
@@ -14,7 +14,7 @@ game.seizures.EndLevel = class EndLevel
 		let finalScore = new QQ.Text(app, String(score), 0, 9, 3);
 		this._world.addSubject(finalScore);
 		
-		const reset = new QQ.Subject(app, 'imgs/restart.png', 5, 5);
+		const reset = new QQ.Subject.Sprite(app, 'imgs/restart.png', 5, 5);
 		reset.setPosition(0, 4);
 		reset.click = () => {
 			app.sz().closePopUp();

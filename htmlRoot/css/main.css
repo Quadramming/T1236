@@ -3,10 +3,6 @@
 	src:         url("../fonts/KenVectorBold.ttf");
 }
 
-.fontLoader {
-	font-size: 0px;
-}
-
 body {
 	background-color: #d5edf7;
 }

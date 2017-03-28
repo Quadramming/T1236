@@ -1,5 +1,5 @@
 game.seizures.Info = class Info
-	extends QQ.Seizures.SeizureBase
+	extends QQ.Seizures.Base
 {
 	
 	constructor(app) {
@@ -19,7 +19,7 @@ game.seizures.Info = class Info
 		text.setLineSpace(10);
 		this._world.addSubject(text);
 		
-		const reset = new QQ.Subject(app, 'imgs/restart.png', 5, 5);
+		const reset = new QQ.Subject.Sprite(app, 'imgs/restart.png', 5, 5);
 		reset.setPosition(-3, 4);
 		reset.click = () => {
 			let field = String( app.storage('Field') );
@@ -30,7 +30,7 @@ game.seizures.Info = class Info
 		};
 		this._world.addSubject(reset);
 		
-		const close = new QQ.Subject(app, 'imgs/next.png', 5, 5);
+		const close = new QQ.Subject.Sprite(app, 'imgs/next.png', 5, 5);
 		close.setPosition(3, 4);
 		close.click = () => {
 			app.sz().closePopUp();

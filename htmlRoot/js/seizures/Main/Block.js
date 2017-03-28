@@ -1,4 +1,4 @@
-game.seizures.Main.Field.Block = class Block extends QQ.Subject {
+game.seizures.Main.Field.Block = class Block extends QQ.Subject.Sprite {
 	
 	constructor(app, x, y, value) {
 		super(app, 'imgs/block.png', 5, 5);

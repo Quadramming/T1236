@@ -1,5 +1,5 @@
 game.seizures.Main = class Main
-	extends QQ.Seizures.SeizureBase
+	extends QQ.Seizures.Base
 {
 	
 	constructor(app) {
@@ -31,7 +31,7 @@ game.seizures.Main = class Main
 	}
 	
 	_addInfo(x, y) {
-		let back = new QQ.Subject(this._app, 'imgs/info.png', 5, 5);
+		let back = new QQ.Subject.Sprite(this._app, 'imgs/info.png', 5, 5);
 		back.setPosition(x, y);
 		back.click = () => this._app.sz().popUp('Info');
 		this._world.addSubject(back);
