@@ -17,8 +17,7 @@ rm -rf cordova/www/*
 cp -RL compiled/* cordova/www
 
 cd cordova
-cordova build -release
-cordova build
+cordova build android --release
 cd ..
 
 cp cordova/platforms/android/build/outputs/apk/* apk
